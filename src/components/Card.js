@@ -14,7 +14,7 @@ const Card = () => {
         console.log('Fetched Quote:', quote);  // Log the fetched quote
         setQuoteData(quote);
 
-        const image = await fetchRandomImage("nature");
+        const image = await fetchRandomImage("minimal");
         console.log('Fetched Image URL:', image);  // Log the fetched image URL
         setImageUrl(image);
       } catch (error) {

@@ -6,7 +6,6 @@ const Home = () => {
   return (
     <>
       <div className="card-wrapper">
-        <div className="card-container">
           <div className="carousel-section">
             <Card />
             <Card />
@@ -21,7 +20,6 @@ const Home = () => {
             <Card />
             <Card />
           </div>
-        </div>
       </div>
     </>
   );
