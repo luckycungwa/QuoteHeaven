@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Card from "./components/Card";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <div className="logo-container">
+        <img src="./images/logo.webp" className="logo" alt="Cover Logo" />
+      </div>
+
+      <Home />
+
+      <div className="footer">
+        <p className="credit-text">by Lucky Cungwa | All Rights Reserved  - &copy; 2024</p>
+        <p className="credit-text"></p>
+      </div>
+
     </div>
   );
 }
