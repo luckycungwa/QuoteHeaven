@@ -81,11 +81,12 @@
   width: 100%;
   height: 100%;
   position: absolute;
-  object-fit: cover;
+  object-fit: container;
 }
 
 .card {
   display: flex;
+  position: relative;
   overflow: hidden;
   flex-direction: column;
   align-items: center;
@@ -93,6 +94,7 @@
   position: relative;
   height: 500px;
   width: 300px;
+  object-fit: fill;
 
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   

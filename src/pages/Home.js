@@ -8,17 +8,7 @@ const Home = () => {
       <div className="card-wrapper">
           <div className="carousel-section">
             <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+           
           </div>
       </div>
     </>
