@@ -1,22 +1,38 @@
+import { useState } from "react";
 import "./App.css";
-import Card from "./components/Card";
 import Home from "./pages/Home";
+// import ThemeToggle from "./components/ThemeToogle";
 
 function App() {
+  // theme stuff
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   return (
-    <div className="App">
+    <div className={isDarkMode ? "dark-theme" : "light-theme"}>
+      <div className="App">
+        <div className="logo-container" id="hide-mobile">
+          <img src="./images/logo_main.png" className="logo" alt="Cover Logo" />
+         
+        </div>
+        
+       
+        <Home />
 
-      <div className="logo-container">
-        <img src="./images/logo.webp" className="logo" alt="Cover Logo" />
+        <div className="footer glass-effect" id="hide-mobile">
+        <hr className="footer-hr"/>
+          <p className="">
+            <a
+              href="https://portfolio-zeta-one-31.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Lucky Cungwa
+            </a>{" "}
+            | All Rights Reserved - &copy; 2024
+          </p>
+          <input type="checkbox" className="theme-checkbox" onClick={() => setIsDarkMode(!isDarkMode)}/>
+        </div>
       </div>
-
-      <Home />
-
-      <div className="footer">
-        <p className="credit-text">by Lucky Cungwa | All Rights Reserved  - &copy; 2024</p>
-        <p className="credit-text"></p>
-      </div>
-
     </div>
   );
 }

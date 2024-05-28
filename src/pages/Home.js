@@ -8,8 +8,8 @@ const Home = () => {
       <div className="card-wrapper">
           <div className="carousel-section">
             <Card />
-           
           </div>
+         
       </div>
     </>
   );
