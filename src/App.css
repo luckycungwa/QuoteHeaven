@@ -1,4 +1,8 @@
-/* install and use Bodoni Bebas Neue */
+/* install and use Bodoni Bebas Neue &  montserrat font */
+
+ @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&display=swap");
 
@@ -6,7 +10,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Bebas Neue", serif;
+  font-family: "Bodoni Moda",  "Montserrat","Bebas Neue", serif;
   cursor: auto;
   scrollbar-width: none;
 }
@@ -404,9 +408,9 @@ a {
   width: fit-content;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 44px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 20px 20px;
 }
 
@@ -453,7 +457,7 @@ backdrop-filter: blur( 10.5px );
 .fab {
   display: flex;
   position: fixed;
-  bottom: 20px;
+  bottom: 0px;
   right: 20px;
   z-index: 999;
   /* padding: 28px 16px; */
