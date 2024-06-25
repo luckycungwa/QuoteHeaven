@@ -1,44 +1,39 @@
-/* install and use Bodoni Bebas Neue &  montserrat font */
-
- @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
-
 
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&display=swap");
 
-*, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Bodoni Moda",  "Montserrat","Bebas Neue", serif;
-  cursor: auto;
-  scrollbar-width: none;
-}
 a {
   cursor: pointer;
 }
 .App {
-  display: flex;
+  /* display: flex; */
   text-align: center;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100dvw;
+  width: 100%;
   height: 100%;
   overflow: hidden;
-  gap: 40px;
-  /* background-color: #f7f7f7 */
-  z-index: 5;
+  /* gap: 40px; */
+  /* background-color: #333333; */
+  z-index: -1;
+}
+
+select {
+  cursor: pointer;
+  display: inline-block;
+  gap: 10px;
+  justify-content: space-between;
 }
 
 .MainScreen {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  /* height: 100%; */
-  height: 100dvh;
+  margin: 0;
   z-index: 0;
 }
 
@@ -51,7 +46,14 @@ a {
   appearance: none;
   width: 6.2em;
   height: 3.125em;
-  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #f5f5f5), color-stop(50%, #2a2a2a)) no-repeat;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(50%, #f5f5f5),
+      color-stop(50%, #2a2a2a)
+    )
+    no-repeat;
   background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
   background: linear-gradient(to right, #f5f5f5 50%, #2a2a2a 50%) no-repeat;
   background-size: 205%;
@@ -63,7 +65,7 @@ a {
   position: relative;
   cursor: pointer;
   font-size: var(--toggle-size);
-right: 3%;
+  right: 3%;
   filter: invert(1);
   position: absolute;
 }
@@ -75,7 +77,14 @@ right: 3%;
   position: absolute;
   top: 0.438em;
   left: 0.438em;
-  background: -webkit-gradient(linear, left top, right top, color-stop(50%, #f5f5f5), color-stop(50%, #2a2a2a)) no-repeat;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      right top,
+      color-stop(50%, #f5f5f5),
+      color-stop(50%, #2a2a2a)
+    )
+    no-repeat;
   background: -o-linear-gradient(left, #f5f5f5 50%, #2a2a2a 50%) no-repeat;
   background: linear-gradient(to right, #f5f5f5 50%, #2a2a2a 50%) no-repeat;
   background-size: 205%;
@@ -125,11 +134,6 @@ right: 3%;
   width: auto;
   height: 42px;
   z-index: 100;
-  justify-content: center;
-  align-items: flex-end;
-  /* font-size: x-large; */
-  /* cursor: pointer; */
-  /* margin-top: 2.5%; */
 }
 
 .water-mark {
@@ -154,13 +158,12 @@ right: 3%;
 }
 
 .footer {
-  height: 40px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50px;
+  height: 40px;
   /* background-color: #232323; */
   filter: invert(auto);
   /* color: #3d3d3d; */
@@ -177,27 +180,26 @@ right: 3%;
 }
 
 .glass-effect {
-  background: rgba( 131, 131, 131, 0.15 );
-box-shadow: 0 8px 32px 0 rgba(52, 52, 52, 0.296);
-backdrop-filter: blur( 12.5px );
--webkit-backdrop-filter: blur( 12.5px );
-/* border-radius: 10px; */
-border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(131, 131, 131, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(24, 24, 24, 0.296);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
 }
 
 .card-content {
-  width: 100%;
+  max-width: 100%;
   height: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-position: absolute;
-  /* background-color: #333333; */
-  padding: 16px;
+  position: absolute;
+  /* background-color: #c15d5d; */
+  padding: 0 24px;
   word-wrap: break-word;
-  
+  transition: all 0.6s ease-in;
 }
 
 .card-img {
@@ -212,7 +214,7 @@ position: absolute;
   width: 100%;
   height: 100%;
   display: flex;
-
+  user-select: none;
   z-index: -5;
 }
 
@@ -220,20 +222,21 @@ position: absolute;
   display: flex;
   /* display: inline-block; */
   position: relative;
-  overflow: hidden;
+  user-select: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  /* height: auto; */
+  border-radius: 4px;
   height: 450px;
   width: 300px;
   /* object-fit: fill; */
-  cursor: none;
-
   box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   background-color: #232323;
+}
+button {
+  /* border-radius: 4px; */
 }
 
 .card-btn {
@@ -241,7 +244,7 @@ position: absolute;
   width: 50px;
   height: 50px;
   z-index: 100;
-  background-color: #ececec;
+  /* background-color: #ececec; */
   color: #232323;
   justify-content: center;
   align-items: center;
@@ -249,8 +252,8 @@ position: absolute;
 }
 
 .icon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   margin-top: 8px;
   /* user-select: none; */
   cursor: pointer;
@@ -300,6 +303,7 @@ position: absolute;
   /* padding: 32px; */
   /* background-color: blue; */
   z-index: 5;
+  transition: all 0.6s linear;
 }
 
 .quote-img {
@@ -318,6 +322,7 @@ position: absolute;
   -webkit-user-drag: none;
   -webkit-user-select: none;
   -ms-user-select: none;
+  transition: all 0.6s linear;
 }
 
 .quote-text {
@@ -329,11 +334,8 @@ position: absolute;
   position: relative;
   letter-spacing: 0.2px;
   line-height: 1.2;
-
-  /* background-color: #181818; */
-  /* padding: 8px 28px; */
-  /* margin-bottom: 28px; */
   z-index: 5;
+  transition: all 0.6s ease-in;
   /* auto select text for copy */
   user-select: all;
   -moz-user-select: all;
@@ -372,6 +374,7 @@ position: absolute;
   color: white;
   font-size: 10px;
   padding-left: 18px;
+  transition: all 0.6s ease-in-out;
 }
 
 a {
@@ -379,7 +382,7 @@ a {
   color: inherit;
   line-height: normal;
   letter-spacing: 0.8px;
-  text-decoration: underline white 1px; 
+  text-decoration: underline white 1px;
 }
 
 .search-container {
@@ -390,7 +393,8 @@ a {
   width: 100%;
   background-color: rgb(246, 255, 0);
   padding: 0 20%;
- }
+  transition: all 0.6s ease-in;
+}
 
 /* CARD SLIDESHOW */
 .carousel-section {
@@ -399,24 +403,49 @@ a {
   /* flex-direction: row; */
   flex-wrap: wrap;
   gap: 14px;
+  margin: 24px 0;
   align-items: center;
   justify-content: center;
+  transition: all 0.6s ease-in;
 }
 .card-grid {
   display: flex;
-  /* height: 100dvh; */
-  width: fit-content;
+  width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
-  gap: 44px;
+  /* gap: 32px; */
   align-items: center;
-  justify-content: space-between;
-  padding: 20px 20px;
+  justify-content: center;
+  padding: 40px 0;
+  transition: all 0.8s ease-in;
+}
+.heading {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding-top: 24px;
+  filter: invert(auto);
+}
+.filter-text {
+  mix-blend-mode: difference;
+  color: inherit;
+  color: #999999;
 }
 
 /* media query for mobile */
 @media screen and (max-height: 600px) {
   #hide-mobile {
+    transition: all 0.6s ease-in;
+    visibility: hidden;
+
+    display: none;
+  }
+}
+/* media query for mobile */
+@media screen and (max-width: 600px) {
+  #hide-mobile {
+    transition: all 0.6s ease-in;
     visibility: hidden;
 
     display: none;
@@ -424,23 +453,23 @@ a {
 }
 @media screen and (max-height: 400px) {
   #resize-mobile {
+    transition: all 0.6s ease-in;
     /* display: none; */
     height: 100dvh;
     width: auto;
     padding: 40px 2%;
-    
   }
 }
 
 .primaryBtn {
-  min-width: 300px;
+  /* min-width: 300px; */
   height: 42px;
   display: flex;
   background-color: #000000ea;
   color: white;
   border: none;
   padding: 8px 16px;
-  font-weight: 600;
+  /* font-weight: 600; */
   font-size: 14px;
   align-items: center;
   justify-content: center;
@@ -450,22 +479,88 @@ a {
   margin: 0;
 
   box-shadow: 0 8px 32px 0 rgba(52, 52, 52, 0.296);
-backdrop-filter: blur( 10.5px );
--webkit-backdrop-filter: blur( 8.5px );
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(8.5px);
+}
+.secondaryBtn {
+  /* min-width: 300px; */
+  height: 42px;
+  display: flex;
+  background-color: none;
+  color: rgb(8, 8, 8);
+  border: 1px solid rgb(8, 8, 8);
+  padding: 8px 16px;
+  /* font-weight: 600; */
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.4s;
+  letter-spacing: 2px;
+  margin: 0;
+
+  box-shadow: 0 8px 32px 0 rgba(52, 52, 52, 0.296);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(8.5px);
 }
 
 .fab {
   display: flex;
   position: fixed;
   bottom: 0px;
-  right: 20px;
+  right: 16px;
   z-index: 999;
   /* padding: 28px 16px; */
+  border: 1px solid black;
   margin-bottom: 28px;
   filter: invert(1);
-  box-shadow:rgba(18, 18, 18, 0.296) 0px 8px 32px 0px;
-  backdrop-filter: blur( 8.5px );
-  -webkit-backdrop-filter: blur( 4.5px );
+  /* background-color: #1d1d1d; */
+  transition: all 0.6s ease-in;
+  mix-blend-mode: auto;
   cursor: pointer;
-  
+  box-shadow: #c8c8ff33 0px 8px 24px;
+}
+
+.advert {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100dvw;
+  height: 50dvh;
+  bottom: 0;
+  object-fit: cover;
+  transition: all 0.6s ease-in;
+  background-color: #242424;
+}
+.demo-ad {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  /* z-index: 999; */
+  width: 100dvw;
+  height: auto;
+}
+
+.header-ad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: auto;
+  height: 100%;
+
+  object-fit: cover;
+  transition: all 0.6s ease-in;
+  /* background-color: #ac8c5a; */
+}
+.hr {
+  border: 0;
+  margin: 0;
+  height: 1px;
+  border-width: 2px;
+  background: #000000;
+  background-image: linear-gradient(to right, #757575b0, #000000, #7575759b);
 }

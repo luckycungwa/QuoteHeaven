@@ -1,0 +1,38 @@
+.tag-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 16px 40px;
+    align-items: center;
+    justify-content: center;
+    transition: all .6s ease-in;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 50px 16px ;
+  }
+  .list-items {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    transition: all .6s ease-in;
+    
+  }
+  
+  .tag-btn {
+    padding: 4px 16px;
+    border-radius: 4px;
+    /* background-color: #f0f0f0; */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  
+  .tag-btn:hover {
+    background-color: #d0d0d0;
+  }
+  

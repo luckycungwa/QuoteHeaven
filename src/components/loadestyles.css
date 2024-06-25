@@ -1,8 +1,8 @@
 
 .loader {
-    --background: linear-gradient(135deg, #252525, #f8f8f8);
+    --background: linear-gradient(135deg, #000000, #f8f8f8);
     --shadow: rgba(36, 36, 36, 0.28);
-    --text: #6C7486;
+    --text: #202020;
     --page: rgba(255, 255, 255, 0.36);
     --page-fold: rgba(255, 255, 255, 0.52);
     --duration: 3s;
@@ -11,8 +11,11 @@
     position: relative;
     color: #252525;
     filter: invert(auto);
-    margin: 28px;
-    letter-spacing: 3px;
+    bottom: 45%x;
+    letter-spacing: 2px;
+    font-size: small;
+    justify-content: center;
+    align-items: center;
   }
   
   .loader:before, .loader:after {
@@ -27,7 +30,7 @@
   }
   
   .loader:before {
-    left: px;
+    left: 0px;
   }
   
   .loader:after {
@@ -36,14 +39,6 @@
   }
   
   .loader div {
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    position: relative;
-    z-index: 1;
-    perspective: 300px;
-    box-shadow: 0 2px 3px var(--shadow);
-    background-image: var(--background);
   }
   
   .loader div ul {

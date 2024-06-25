@@ -4,8 +4,8 @@ import "../components/loadestyles.css";
 
 const ProgressLoader = () => {
   return (
-      <div class="loader">
-        <div className="">
+      <div className="loader">
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column", gap: "10px" }}>
           <ul>
             <li>
               <svg fill="currentColor" viewBox="0 0 90 120">
@@ -38,8 +38,9 @@ const ProgressLoader = () => {
               </svg>
             </li>
           </ul>
+          <span className="text"><p style={{marginTop: "24px", color: "white"}}>Loading...</p></span>
         </div>
-        <span>Loading...</span>
+        
     </div>
   );
 };
