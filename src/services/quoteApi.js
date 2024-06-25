@@ -11,14 +11,16 @@ export async function fetchQuote() {
     return { quote, author };
   } catch (error) {
     console.error('Error fetching quote:', error.response || error.message);
-    return { quote: 'Failed to get some inspiration. Please try again.', author: '' };
+    return { quote: 'Error Loading Quote. Please try again.' };
   }
 }
 
 // Function for search results of quotes
 export async function fetchSearchQuote(search) {
   try {
-    const response = await axios.get(`${searchApi}?query=${search}`);
+    const response = await axios.get(searchApi, {
+      params: { query: search }
+    });
     return response.data.results;
   } catch (error) {
     console.error('Error finding related inspiration:', error.response || error.message);

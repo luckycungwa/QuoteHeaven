@@ -190,15 +190,19 @@ select {
 .card-content {
   max-width: 100%;
   height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  /* background-color: #c15d5d; */
-  padding: 0 24px;
+  text-align: center;
   word-wrap: break-word;
+  padding: 0 32px;
   transition: all 0.6s ease-in;
 }
 
@@ -220,23 +224,17 @@ select {
 
 .card {
   display: flex;
-  /* display: inline-block; */
   position: relative;
   user-select: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
   border-radius: 4px;
   height: 450px;
   width: 300px;
-  /* object-fit: fill; */
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
-  background-color: #232323;
-}
-button {
-  /* border-radius: 4px; */
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+  background-size: cover;
+  background-position: center;
 }
 
 .card-btn {
@@ -261,8 +259,8 @@ button {
 
 .card-footer {
   display: flex;
-  width: 100%;
-  justify-content: space-between;
+  /* width: 100%; */
+  /* justify-content: space-between; */
   align-items: center;
   position: absolute;
   bottom: 0;
@@ -284,8 +282,9 @@ button {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.8;
-  background: radial-gradient(circle, #000000a1 0%, #20202070 100%);
+  opacity: 0.6;
+  background-image: url(./nnnoise.svg);
+  /* background: radial-gradient(circle, #000000a1 0%, #20202070 100%); */
   /* backdrop-filter: blur(1px); */
   z-index: 1; /* Ensure the overlay is above the image but below the content */
 }
@@ -326,6 +325,7 @@ button {
 }
 
 .quote-text {
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -349,7 +349,7 @@ button {
   font-size: 10px;
   font-weight: lighter;
   padding-right: 24px;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   z-index: 5;
   letter-spacing: 1.5px;
   /* auto select text for copy */
@@ -562,5 +562,5 @@ a {
   height: 1px;
   border-width: 2px;
   background: #000000;
-  background-image: linear-gradient(to right, #757575b0, #000000, #7575759b);
+  background-image: linear-gradient(to right, #75757546, #000000, #75757546);
 }

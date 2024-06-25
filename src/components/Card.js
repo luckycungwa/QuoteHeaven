@@ -1,14 +1,33 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { fetchQuote, fetchSearchQuote } from "../services/quoteApi";
-import { fetchRandomImage } from "../services/unsplashApi";
 import { FaArrowDown } from "react-icons/fa";
 import * as htmlToImage from "html-to-image";
 import ProgressLoader from "./ProgressLoader";
 import SearchBar from "./SearchBar";
 import TagList from "./TagList";
-import styles from "./loadestyles.css";
+import { DiBlackberry } from "react-icons/di";
 
 const BATCH_SIZE = 16; // Number of cards to fetch at a time
+
+const predefinedColors = [
+  '#000000', '#ff4343', '#2d2d2d', '#ff5959', '#003ffd', '#7b00ff',
+
+  // '#33A1FF', '#FF9633', '#9633FF', '#FF3396', '#96FF33',
+  // '#3396FF', '#FF337B', '#7BFF33', '#337BFF', '#FF7B33',
+  // '#7B33FF', '#33FF7B', '#FF3377', '#7733FF', '#FF7733'
+];
+
+function generateRandomGradient() {
+  const getRandomColor = () => {
+    return predefinedColors[Math.floor(Math.random() * predefinedColors.length)];
+  };
+
+  const color1 = getRandomColor();
+  const color2 = getRandomColor();
+  const color3 = getRandomColor();
+
+  return `linear-gradient(180deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
+}
 
 const Card = ({ theme, onThemeChange }) => {
   const [cards, setCards] = useState([]);
@@ -23,16 +42,11 @@ const Card = ({ theme, onThemeChange }) => {
       const quotes = await Promise.all(
         Array.from({ length: BATCH_SIZE }, fetchQuote)
       );
-      const images = await Promise.all(
-        Array.from({ length: BATCH_SIZE }, () =>
-          fetchRandomImage("texture backgrounds")
-        )
-      );
 
-      const newCards = quotes.map((quote, index) => ({
+      const newCards = quotes.map((quote) => ({
         quote: quote.quote,
         author: quote.author,
-        imageUrl: images[index],
+        background: generateRandomGradient(),
       }));
 
       setCards((prevCards) => [...prevCards, ...newCards]);
@@ -48,17 +62,12 @@ const Card = ({ theme, onThemeChange }) => {
   const fetchSearchResults = async (search) => {
     try {
       const results = await fetchSearchQuote(search);
-      const images = await Promise.all(
-        Array.from({ length: results.length }, () =>
-          fetchRandomImage("texture backgrounds")
-        )
-      );
 
       setCards(
-        results.map((result, index) => ({
+        results.map((result) => ({
           quote: result.content,
           author: result.author,
-          imageUrl: images[index],
+          background: generateRandomGradient(),
         }))
       );
     } catch (error) {
@@ -127,34 +136,30 @@ const Card = ({ theme, onThemeChange }) => {
   }, [loadMoreCards]);
 
   // Define some example tags
-  const exampleTags = ["love", "life", "inspiration", "humor", "wisdom"];
+  const exampleTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "humor"];
 
   return (
     <>
       <div className="header-ad" id="main">
         <TagList tags={exampleTags} onTagClick={handleTagClick} />
-        
       </div>
-
       <hr className="hr"/>
       <div className="card-grid" style={{ backgroundColor: theme }}>
-      
         <div className="filter-text">
           <SearchBar onSearch={handleSearch} />
-          <h2 className="hero-heading">Today's Quotes</h2>
+          <h2 className="hero-heading">
+            {selectedTag ? `"${selectedTag} Quotes"` : "Today's Quotes"}
+          </h2>
           {isLoading && (
             <div>
               <div className="loadingScreen">
-                {/* load advert div unless cards have loaded > 8 */}
                 {cards.length <= 0 && (
                   <div className="advert">
                     <ProgressLoader />
                   </div>
                 )}
-
                 {cards.length >= 8 && (
                   <div className="advert">
-                    {/* <p>Advert Text...</p> */}
                     <img src="./image-2.png" alt="advert" className="demo-ad" />
                   </div>
                 )}
@@ -162,25 +167,14 @@ const Card = ({ theme, onThemeChange }) => {
             </div>
           )}
         </div>
-
         <div className="carousel-section">
           {cards.map((card, index) => (
             <div className="card" key={index} id="resize-mobile">
-              <div id={`quote-img-${index}`} className="quote-img">
-                <div className="image" alt="background">
-                  <img
-                    src={card.imageUrl}
-                    alt="background cover"
-                    className="card-img"
-                    lazy="true"
-                  />
-                </div>
+              <div id={`quote-img-${index}`} className="quote-img" style={{ backgroundImage: card.background }}>
                 <div className="overlay" />
                 <div className="card-content">
-                  {card.quote && <p className="quote-text">"{card.quote}"</p>}
-                  {card.author && (
-                    <li className="author-name">{card.author}</li>
-                  )}
+                  {card.quote && <p className="quote-text">" {card.quote} "</p>}
+                  {card.author && <li className="author-name">{card.author}</li>}
                 </div>
                 <div className="card-footer">
                   <img
@@ -190,21 +184,10 @@ const Card = ({ theme, onThemeChange }) => {
                   />
                 </div>
               </div>
-
               <div className="card-footer">
-                <p className="credit-text">
-                  Image by{" "}
-                  <a
-                    href={card.imageUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Unsplash
-                  </a>
-                </p>
                 <button
                   onClick={() => downloadImage(index)}
-                  className="z-999 card-btn"
+                  className="card-btn"
                 >
                   <FaArrowDown className="icon" />
                 </button>
