@@ -5,16 +5,12 @@ import * as htmlToImage from "html-to-image";
 import ProgressLoader from "./ProgressLoader";
 import SearchBar from "./SearchBar";
 import TagList from "./TagList";
-import { DiBlackberry } from "react-icons/di";
 
 const BATCH_SIZE = 16; // Number of cards to fetch at a time
 
 const predefinedColors = [
-  '#000000', '#ff4343', '#2d2d2d', '#ff5959', '#003ffd', '#7b00ff',
+  '#0a0a0a', '#313131', '#2d2d2d', '#ff5959', '#003ffd', '#7b00ff',
 
-  // '#33A1FF', '#FF9633', '#9633FF', '#FF3396', '#96FF33',
-  // '#3396FF', '#FF337B', '#7BFF33', '#337BFF', '#FF7B33',
-  // '#7B33FF', '#33FF7B', '#FF3377', '#7733FF', '#FF7733'
 ];
 
 function generateRandomGradient() {
@@ -136,7 +132,7 @@ const Card = ({ theme, onThemeChange }) => {
   }, [loadMoreCards]);
 
   // Define some example tags
-  const exampleTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "humor"];
+  const exampleTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "History", "humor"];
 
   return (
     <>
@@ -147,8 +143,8 @@ const Card = ({ theme, onThemeChange }) => {
       <div className="card-grid" style={{ backgroundColor: theme }}>
         <div className="filter-text">
           <SearchBar onSearch={handleSearch} />
-          <h2 className="hero-heading">
-            {selectedTag ? `"${selectedTag} Quotes"` : "Today's Quotes"}
+          <h2 className="hero-heading underline">
+            {selectedTag ?`${selectedTag} Quotes` : "Today's Quotes"}
           </h2>
           {isLoading && (
             <div>
@@ -158,11 +154,11 @@ const Card = ({ theme, onThemeChange }) => {
                     <ProgressLoader />
                   </div>
                 )}
-                {cards.length >= 8 && (
+                {/* {cards.length >= 8 && (
                   <div className="advert">
                     <img src="./image-2.png" alt="advert" className="demo-ad" />
                   </div>
-                )}
+                )} */}
               </div>
             </div>
           )}
