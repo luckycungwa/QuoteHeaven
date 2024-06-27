@@ -38,7 +38,7 @@ const HeroSection = () => {
           {quote ? `"${quote}" - ${author}` : "Inspire your day..."}
         </p>
       </div>
-      <button className="hero-button" onClick={handleScrollToMain}>
+      <button className="hero-button" onClick={handleScrollToMain} aria-label="View more quotes">
         Get Inspired
       </button>
       <div></div>

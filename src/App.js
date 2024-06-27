@@ -37,7 +37,7 @@ function App() {
   };
 
   return (
-    <section className={isDarkMode ? "dark-theme" : "light-theme"}>
+    <main className={isDarkMode ? "dark-theme" : "light-theme"}>
       <div className="MainScreen">
         <Navbar onOpenSettings={handleOpenSettings} />
         <div>
@@ -55,15 +55,10 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Lucky Cungwa
+                Developed by Lucky Cungwa
               </a>{" "}
               | All Rights Reserved - &copy; 2024
             </p>
-            <input
-              type="checkbox"
-              className="theme-checkbox"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-            />
           </div>
         </div>
       </div>
@@ -76,7 +71,7 @@ function App() {
           currentFont={font}
         />
       )}
-    </section>
+    </main>
   );
 }
 

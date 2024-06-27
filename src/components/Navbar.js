@@ -16,7 +16,8 @@ const Navbar = ({ onOpenSettings }) => {
   return (
     <>
       <nav className="navbar">
-        <div className="navbar-item" onClick={handleInfoClick}>
+      <div className='nav-items'>
+         <div className="navbar-item" onClick={handleInfoClick}>
           <FaCode size={24} />
         </div>
         <div className="navbar-item">
@@ -25,6 +26,8 @@ const Navbar = ({ onOpenSettings }) => {
         <div className="navbar-item" onClick={handleSettingsClick}>
           <FaCog size={24} />
         </div>
+      </div>
+       
       </nav>
       
     </>

@@ -7,7 +7,7 @@ const TagList = ({ tags, onTagClick }) => {
     <p>Choose your aura today</p>
     <div className='list-items'>
         {tags.map((tag, index) => (
-        <button key={index} onClick={() => onTagClick(tag)} className="tag-btn">
+        <button key={index} onClick={() => onTagClick(tag)} className="tag-btn" aria-label={`select ${tag} quotes`}>
           {tag}
         </button>
       ))}

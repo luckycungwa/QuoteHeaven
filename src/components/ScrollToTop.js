@@ -12,6 +12,7 @@ const ScrollToTop = () => {
             <button
                 className="card-btn"
                 onClick={handleScroll}
+                aria-label="Scroll to top"
             >
                 <FaArrowUp size={18}/>
             </button>

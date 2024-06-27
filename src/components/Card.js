@@ -5,12 +5,13 @@ import * as htmlToImage from "html-to-image";
 import ProgressLoader from "./ProgressLoader";
 import SearchBar from "./SearchBar";
 import TagList from "./TagList";
+import { Helmet } from "react-helmet";
 
 const BATCH_SIZE = 16; // Number of cards to fetch at a time
 
 const predefinedColors = [
-  '#0a0a0a', '#414141', '#2d2d2d', '#6469ff', '#ff325f',
-
+  // '#0a0a0a', '#414141', '#2d2d2d', '#6469ff', '#ff325f', 
+  '#1a1a1a', '#00ffbc', '#050505'
 ];
 
 function generateRandomGradient() {
@@ -20,9 +21,8 @@ function generateRandomGradient() {
 
   const color1 = getRandomColor();
   const color2 = getRandomColor();
-  const color3 = getRandomColor();
 
-  return `linear-gradient(175deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
+  return `linear-gradient(180deg, ${color1} 0%, ${color2} 100%)`;
 }
 
 const Card = ({ theme, onThemeChange }) => {
@@ -131,21 +131,25 @@ const Card = ({ theme, onThemeChange }) => {
     }
   }, [loadMoreCards]);
 
-  // Define some example tags
-  const exampleTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "History", "humor"];
+
+  const themeTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "History", "humor"];
 
   return (
     <>
-      <div className="header-ad" id="main">
-        <TagList tags={exampleTags} onTagClick={handleTagClick} />
+      <Helmet>
+        <title>{selectedTag ? `${selectedTag} Quotes` : "Daily Quotes"}</title>
+        <meta name="description" content="Get inspired by daily quotes on love, life, and more." />
+      </Helmet>
+      <div className="header-ad">
+        <TagList tags={themeTags} onTagClick={handleTagClick} />
       </div>
       <hr className="hr"/>
-      <div className="card-grid" style={{ backgroundColor: theme }}>
+      <div className="card-grid" style={{ backgroundColor: theme }} id="main">
         <div className="filter-text">
           <SearchBar onSearch={handleSearch} />
-          <h2 className="hero-heading underline">
-            {selectedTag ?`${selectedTag} Quotes` : "Today's Quotes"}
-          </h2>
+          <h1 className="hero-heading underline">
+            {selectedTag ? `${selectedTag} Quotes` : "Today's Quotes"}
+          </h1>
           {isLoading && (
             <div>
               <div className="loadingScreen">
@@ -154,11 +158,6 @@ const Card = ({ theme, onThemeChange }) => {
                     <ProgressLoader />
                   </div>
                 )}
-                {/* {cards.length >= 8 && (
-                  <div className="advert">
-                    <img src="./image-2.png" alt="advert" className="demo-ad" />
-                  </div>
-                )} */}
               </div>
             </div>
           )}
@@ -184,6 +183,7 @@ const Card = ({ theme, onThemeChange }) => {
                 <button
                   onClick={() => downloadImage(index)}
                   className="card-btn"
+                  aria-label="Download quote Image"
                 >
                   <FaArrowDown className="icon" />
                 </button>

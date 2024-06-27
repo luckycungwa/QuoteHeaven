@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./modal.css";
 
 const SettingsModal = ({ onClose, onThemeChange, onFontChange, currentTheme, currentFont }) => {
@@ -9,18 +9,18 @@ const SettingsModal = ({ onClose, onThemeChange, onFontChange, currentTheme, cur
   const themeOptions = [
     { color: "#F6F6F6" },
     { color: "#9db1ff" },
-    { color: "#ffe7e7" },
+    { color: "#FFD6EC" },
     { color: "#CCFFBD" },
-    { color: "#A0C1B8" },
+    { color: "#BCCEF8" },
     { color: "#313131" },
     
   ];
 
   const fontOptions = [
-    { fontFamily: "Montserrat" },
     { fontFamily: "Poppins" },
-    { fontFamily: "Bodoni Moda" },
     { fontFamily: "Bebas Neue" },
+    { fontFamily: "Noto Sans Display" },
+    { fontFamily: "Patrick Hand SC" },
   ];
 
   const handleApply = () => {
@@ -61,10 +61,10 @@ const SettingsModal = ({ onClose, onThemeChange, onFontChange, currentTheme, cur
         </div>
 
         <div className="modal-actions">
-          <button className="secondaryBtn" onClick={onClose}>
+          <button className="secondaryBtn" onClick={onClose} aria-label="Cancel settings">
             Cancel
           </button>
-          <button className="primaryBtn" onClick={handleApply}>Apply</button>
+          <button className="primaryBtn" onClick={handleApply} aria-label="Apply settings">Apply</button>
         </div>
       </div>
     </div>
