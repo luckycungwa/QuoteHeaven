@@ -55,7 +55,7 @@ function App() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Developed by Lucky Cungwa
+                by Lucky Cungwa
               </a>{" "}
               | All Rights Reserved - &copy; 2024
             </p>
