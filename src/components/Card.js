@@ -9,7 +9,7 @@ import TagList from "./TagList";
 const BATCH_SIZE = 16; // Number of cards to fetch at a time
 
 const predefinedColors = [
-  '#0a0a0a', '#313131', '#2d2d2d', '#ff5959', '#003ffd', '#7b00ff',
+  '#0a0a0a', '#414141', '#2d2d2d', '#6469ff', '#ff325f',
 
 ];
 
@@ -22,7 +22,7 @@ function generateRandomGradient() {
   const color2 = getRandomColor();
   const color3 = getRandomColor();
 
-  return `linear-gradient(180deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
+  return `linear-gradient(175deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
 }
 
 const Card = ({ theme, onThemeChange }) => {
