@@ -32,9 +32,7 @@ const HeroSection = () => {
       <div></div>
       <div className="hero-content">
         <h1 className="hero-heading">The Daily Rise & Thrive</h1>
-        <p className="hero-subheading">
-          {quote ? `"${quote}" - ${author}` : "Inspire your day..."}
-        </p>
+        <p className="hero-subheading"> {quote ? ( <> <span>"{quote}"</span> <br /> <span>- {author}</span> </> ) : ( "Inspire your day..." )} </p>
       </div>
       <button className="hero-button" onClick={handleScrollToMain} aria-label="View more quotes">
         Get Inspired
