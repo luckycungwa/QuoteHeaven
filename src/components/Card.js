@@ -1,3 +1,4 @@
+// Card.js
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { fetchQuote, fetchSearchQuote } from "../services/quoteApi";
 import { FaArrowDown } from "react-icons/fa";
@@ -40,7 +41,7 @@ const Card = ({ theme, onThemeChange }) => {
       );
 
       const newCards = quotes.map((quote) => ({
-        quote: quote.quote,
+        quote: quote.text,
         author: quote.author,
         background: generateRandomGradient(),
       }));
@@ -61,7 +62,7 @@ const Card = ({ theme, onThemeChange }) => {
 
       setCards(
         results.map((result) => ({
-          quote: result.content,
+          quote: result.text,
           author: result.author,
           background: generateRandomGradient(),
         }))
@@ -130,7 +131,6 @@ const Card = ({ theme, onThemeChange }) => {
       observer.current.observe(document.querySelector("#load-more-trigger"));
     }
   }, [loadMoreCards]);
-
 
   const themeTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "History", "humor"];
 
