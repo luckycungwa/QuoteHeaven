@@ -85,8 +85,20 @@ const Card = ({ theme, onThemeChange }) => {
     }
   };
 
+  const themeTags = [
+    "love",
+    "life",
+    "inspiration",
+    "death",
+    "wisdom",
+    "resilience",
+    "History",
+    "humor",
+  ];
+
   const handleTagClick = (tag) => {
     setSelectedTag(tag);
+    setSearch("");
     fetchSearchResults(tag);
   };
 
@@ -134,16 +146,7 @@ const Card = ({ theme, onThemeChange }) => {
     }
   }, [loadMoreCards]);
 
-  const themeTags = [
-    "love",
-    "life",
-    "inspiration",
-    "death",
-    "wisdom",
-    "resilience",
-    "History",
-    "humor",
-  ];
+
 
   return (
     <>
@@ -155,12 +158,12 @@ const Card = ({ theme, onThemeChange }) => {
         />
       </Helmet>
       <div className="header-ad">
-        <TagList tags={themeTags} onTagClick={handleTagClick} />
+        {/* <TagList tags={themeTags} onTagClick={handleTagClick} /> */}
       </div>
       <hr className="hr" />
       <div className="card-grid" style={{ backgroundColor: theme }} id="main">
         <div className="filter-text">
-          <SearchBar onSearch={handleSearch} />
+          {/* <SearchBar onSearch={handleSearch} /> */}
           <h1 className="hero-heading underline">
             {selectedTag ? `${selectedTag} Quotes` : "Today's Quotes"}
           </h1>
