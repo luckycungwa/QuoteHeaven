@@ -349,6 +349,7 @@ select {
 }
 
 .author-name {
+  width: 50%;
   color: white;
   font-size: 10px;
   font-weight: lighter;
@@ -404,7 +405,7 @@ a {
 .carousel-section {
   display: flex;
   width: fit-content;
-  /* flex-direction: row; */
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 14px;
   margin: 24px 0;

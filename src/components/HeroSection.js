@@ -10,7 +10,7 @@ const HeroSection = () => {
     const getRandomQuote = async () => {
       try {
         const randomQuote = await fetchQuote();
-        setQuote(randomQuote.quote);
+        setQuote(randomQuote.text);
         setAuthor(randomQuote.author);
       } catch (error) {
         console.error("Error fetching the quote:", error);
@@ -21,7 +21,6 @@ const HeroSection = () => {
   }, []);
 
   const handleScrollToMain = () => {
-    // document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
     window.scrollTo({
       top: document.getElementById("main").offsetTop,
       behavior: "smooth",
@@ -30,9 +29,8 @@ const HeroSection = () => {
 
   return (
     <div className="hero">
-    <div></div>
+      <div></div>
       <div className="hero-content">
-      
         <h1 className="hero-heading">The Daily Rise & Thrive</h1>
         <p className="hero-subheading">
           {quote ? `"${quote}" - ${author}` : "Inspire your day..."}

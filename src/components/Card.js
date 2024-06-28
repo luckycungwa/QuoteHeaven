@@ -1,4 +1,3 @@
-// Card.js
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { fetchQuote, fetchSearchQuote } from "../services/quoteApi";
 import { FaArrowDown } from "react-icons/fa";
@@ -11,13 +10,16 @@ import { Helmet } from "react-helmet";
 const BATCH_SIZE = 16; // Number of cards to fetch at a time
 
 const predefinedColors = [
-  // '#0a0a0a', '#414141', '#2d2d2d', '#6469ff', '#ff325f', 
-  '#1a1a1a', '#00ffbc', '#050505'
+  "#1a1a1a",
+  "#00ffbc",
+  "#050505",
 ];
 
 function generateRandomGradient() {
   const getRandomColor = () => {
-    return predefinedColors[Math.floor(Math.random() * predefinedColors.length)];
+    return predefinedColors[
+      Math.floor(Math.random() * predefinedColors.length)
+    ];
   };
 
   const color1 = getRandomColor();
@@ -41,7 +43,7 @@ const Card = ({ theme, onThemeChange }) => {
       );
 
       const newCards = quotes.map((quote) => ({
-        quote: quote.text,
+        quote: quote.text || quote.quote,
         author: quote.author,
         background: generateRandomGradient(),
       }));
@@ -62,7 +64,7 @@ const Card = ({ theme, onThemeChange }) => {
 
       setCards(
         results.map((result) => ({
-          quote: result.text,
+          quote: result.text || result.quote,
           author: result.author,
           background: generateRandomGradient(),
         }))
@@ -132,18 +134,30 @@ const Card = ({ theme, onThemeChange }) => {
     }
   }, [loadMoreCards]);
 
-  const themeTags = ["love", "life", "inspiration", "death", "wisdom", "resilience", "History", "humor"];
+  const themeTags = [
+    "love",
+    "life",
+    "inspiration",
+    "death",
+    "wisdom",
+    "resilience",
+    "History",
+    "humor",
+  ];
 
   return (
     <>
       <Helmet>
         <title>{selectedTag ? `${selectedTag} Quotes` : "Daily Quotes"}</title>
-        <meta name="description" content="Get inspired by daily quotes on love, life, and more." />
+        <meta
+          name="description"
+          content="Get inspired by daily quotes on love, life, and more."
+        />
       </Helmet>
       <div className="header-ad">
         <TagList tags={themeTags} onTagClick={handleTagClick} />
       </div>
-      <hr className="hr"/>
+      <hr className="hr" />
       <div className="card-grid" style={{ backgroundColor: theme }} id="main">
         <div className="filter-text">
           <SearchBar onSearch={handleSearch} />
@@ -165,11 +179,17 @@ const Card = ({ theme, onThemeChange }) => {
         <div className="carousel-section">
           {cards.map((card, index) => (
             <div className="card" key={index} id="resize-mobile">
-              <div id={`quote-img-${index}`} className="quote-img" style={{ backgroundImage: card.background }}>
+              <div
+                id={`quote-img-${index}`}
+                className="quote-img"
+                style={{ backgroundImage: card.background }}
+              >
                 <div className="overlay" />
                 <div className="card-content">
                   {card.quote && <p className="quote-text">" {card.quote} "</p>}
-                  {card.author && <li className="author-name">{card.author}</li>}
+                  {card.author && (
+                    <li className="author-name">{card.author}</li>
+                  )}
                 </div>
                 <div className="card-footer">
                   <img
@@ -191,6 +211,11 @@ const Card = ({ theme, onThemeChange }) => {
             </div>
           ))}
         </div>
+        {isLoading && cards.length > 8 && (
+          <div className="">
+            <ProgressLoader />
+          </div>
+        )}
         <div id="load-more-trigger" style={{ height: "20px" }} />
       </div>
     </>
