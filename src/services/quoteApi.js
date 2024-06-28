@@ -1,11 +1,13 @@
-import localQuotes from './quotes.json'; //using local api since free apis are limited
+import quotes from './quotes.json'; // Assuming quotes.json is in the same directory
 
-// Function to get a random quote from the local JSON file
+// Function to get a random quote from the imported JSON file
 export function fetchLocalQuote() {
-  const randomIndex = Math.floor(Math.random() * localQuotes.length);
-  const { en: text, author } = localQuotes[randomIndex];
-  return { text, author };
+  const randomIndex = Math.floor(Math.random() * quotes.quotes.length);
+  const { quote, author } = quotes.quotes[randomIndex];
+  return { text: quote, author };
 }
+
+
 
 // Function for random quotes
 export async function fetchQuote() {
@@ -14,7 +16,7 @@ export async function fetchQuote() {
 
 // Function for search results of quotes
 export async function fetchSearchQuote(search) {
-  return localQuotes.filter(quote =>
+  return quotes.filter(quote =>
     quote.en.toLowerCase().includes(search.toLowerCase()) || 
     quote.author.toLowerCase().includes(search.toLowerCase())
   );
